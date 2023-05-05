@@ -1,0 +1,38 @@
+<h1><%= @task.title %></h1>
+<%= link_to "タスク一覧へ", tasks_path, {class: "btn btn-primary mx-1"} %>
+
+<!-- table table-stripedでテーブルの行に薄く色が交互について若干見やすくなる-->
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>
+        タスク
+      </th>
+      <th>
+        詳細
+      </th>
+      <th>
+        作成日
+      </th>
+      <th>
+        更新日
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td>
+          <%= @task.title %>
+        </td>
+        <td>
+          <%= @task.body %>
+        </td>
+        <td>
+          <%= @task.created_at.to_s(:datetime_jp) %>
+        </td>
+        <td>
+          <%= @task.updated_at.to_s(:datetime_jp) %>
+        </td>
+      </tr>
+  </tbody>
+</table>

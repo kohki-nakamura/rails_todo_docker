@@ -1,0 +1,40 @@
+<h1>タスク一覧</h1>
+<%= link_to "新規タスク", new_task_path, {class: "btn btn-primary mx-1"} %>
+
+<!-- table table-stripedでテーブルの行に薄く色が交互について若干見やすくなる-->
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>
+        タスク
+      </th>
+      <th>
+        詳細
+      </th>
+      <th>
+        編集
+      </th>
+      <th>
+        削除
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td>
+          <%= link_to task.title, task %>
+        </td>
+        <td>
+          <%= task.body %>
+        </td>
+        <td>
+          <%= link_to "編集", edit_task_path(task), {class: "btn btn-primary mx-1"} %>
+        </td>
+        <td>
+          <%= link_to '削除', task, class: "btn btn-danger mx-1", data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
